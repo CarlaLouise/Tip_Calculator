@@ -29,8 +29,7 @@ class MainActivity : AppCompatActivity() {
 
 
         binding.btnClean.setOnClickListener {
-                println("Roque1" + binding.tieTotal.text)
-                println("Roque1" + binding.tieNumPeople.text)
+
         }
 
     }
