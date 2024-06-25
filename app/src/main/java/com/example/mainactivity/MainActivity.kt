@@ -3,12 +3,10 @@ package com.example.mainactivity
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mainactivity.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 
 class MainActivity : AppCompatActivity() {
-
-
-
     // Valor total conta
     // Numero de pessoas
     // Porcentagem da gorjeta
@@ -38,7 +36,6 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         binding.rbOptionTwo.setOnCheckedChangeListener {_, isChecked ->
             if(isChecked){
                 percentage = 15
@@ -51,23 +48,30 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
         binding.btnClean.setOnClickListener {
                 println("Roque1 " + binding.tieTotal.text)
                 println("Roque1 " + binding.tieNumPeople.text)
         }
 
-
         binding.btnDone.setOnClickListener {
-            val totalTable: Float = binding.tieTotal.text.toString().toFloat()
-            val nPeople: Int = binding.tieNumPeople.text.toString().toInt()
+            val totalTableTemp = binding.tieTotal.text
+            val nPeopleTemp = binding.tieNumPeople.text
 
-            val totalTemp = totalTable / nPeople
-            val tips = totalTemp * percentage / 100
-            val totalWithTips = totalTemp + tips
-            binding.tvResult.text = "Total with tips: $totalWithTips"
+            if(totalTableTemp?.isEmpty() == true ||
+               nPeopleTemp?.isEmpty() == true
+            ) {
+                Snackbar.make(binding.tieTotal, "Preencha todos os campos", Snackbar.LENGTH_LONG)
+                    .show()
+            } else {
+                val totalTable: Float = totalTableTemp.toString().toFloat()
+                val nPeople: Int = nPeopleTemp.toString().toInt()
 
+                val totalTemp = totalTable / nPeople
+                val tips = totalTemp * percentage / 100
+                val totalWithTips = totalTemp + tips
+                binding.tvResult.text = "Total with tips: $totalWithTips"
 
+            }
         }
     }
 }
