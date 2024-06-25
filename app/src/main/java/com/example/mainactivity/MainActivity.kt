@@ -8,6 +8,7 @@ import com.example.mainactivity.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
 
+
     // Valor total conta
     // Numero de pessoas
     // Porcentagem da gorjeta
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     // ViewBinding
 
     // Recuperar os radio buttons
+    // Calculo de tip
+    // Mostrar resultado
 
     private lateinit var binding: ActivityMainBinding
 
@@ -49,7 +52,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-
         binding.btnClean.setOnClickListener {
                 println("Roque1 " + binding.tieTotal.text)
                 println("Roque1 " + binding.tieNumPeople.text)
@@ -63,7 +65,8 @@ class MainActivity : AppCompatActivity() {
             val totalTemp = totalTable / nPeople
             val tips = totalTemp * percentage / 100
             val totalWithTips = totalTemp + tips
-            println("Roque1 " + totalWithTips)
+            binding.tvResult.text = "Total with tips: $totalWithTips"
+
 
         }
     }
