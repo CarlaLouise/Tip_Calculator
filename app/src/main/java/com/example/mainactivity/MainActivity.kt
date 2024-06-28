@@ -1,5 +1,6 @@
 package com.example.mainactivity
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -97,14 +98,17 @@ class MainActivity : AppCompatActivity() {
                 binding.tvResult.text = "Total with tips: $totalWithTips"
 
             }
-
+        }
             binding.btnClean.setOnClickListener {
                 binding.tvResult.text = ""
                 binding.tieTotal.setText("")
                 binding.rbOptionOne.isChecked = false
                 binding.rbOptionTwo.isChecked = false
                 binding.rbOptionThree.isChecked = false
-            }
+
+                val intent = Intent (this, SummaryActivity::class.java)
+                startActivity(intent)
+
         }
     }
 }
