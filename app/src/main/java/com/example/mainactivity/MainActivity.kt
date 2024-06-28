@@ -95,19 +95,24 @@ class MainActivity : AppCompatActivity() {
                 val totalTemp = totalTable / nPeople
                 val tips = totalTemp * percentage / 100
                 val totalWithTips = totalTemp + tips
-                binding.tvResult.text = "Total with tips: $totalWithTips"
 
+                val intent = Intent (this, SummaryActivity::class.java)
+                intent.apply {
+                    putExtra("totalTable", totalTable)
+                    putExtra("numPeople", numOfPeopleSelected)
+                    putExtra("percentage", percentage)
+                    putExtra("totalAmount", totalWithTips)
+                }
+                startActivity(intent)
             }
         }
             binding.btnClean.setOnClickListener {
-                binding.tvResult.text = ""
                 binding.tieTotal.setText("")
                 binding.rbOptionOne.isChecked = false
                 binding.rbOptionTwo.isChecked = false
                 binding.rbOptionThree.isChecked = false
 
-                val intent = Intent (this, SummaryActivity::class.java)
-                startActivity(intent)
+
 
         }
     }
