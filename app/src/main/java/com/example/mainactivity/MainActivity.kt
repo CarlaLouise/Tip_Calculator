@@ -11,19 +11,6 @@ import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
-    // Valor total conta
-    // Numero de pessoas
-    // Porcentagem da gorjeta
-    // 10%, 15% ou 20%
-    // Calcular
-    // Limpar
-
-    // Recuperar as Views do layout
-    // ViewBinding
-
-    // Recuperar os radio buttons
-    // Calculo de tip
-    // Mostrar resultado
 
     private lateinit var binding: ActivityMainBinding
 
@@ -103,17 +90,20 @@ class MainActivity : AppCompatActivity() {
                     putExtra("percentage", percentage)
                     putExtra("totalAmount", totalWithTips)
                 }
+                clean()
                 startActivity(intent)
             }
         }
+
             binding.btnClean.setOnClickListener {
-                binding.tieTotal.setText("")
-                binding.rbOptionOne.isChecked = false
-                binding.rbOptionTwo.isChecked = false
-                binding.rbOptionThree.isChecked = false
-
-
-
+                clean()
         }
+    }
+
+    private fun clean () {
+        binding.tieTotal.setText("")
+        binding.rbOptionOne.isChecked = false
+        binding.rbOptionTwo.isChecked = false
+        binding.rbOptionThree.isChecked = false
     }
 }
