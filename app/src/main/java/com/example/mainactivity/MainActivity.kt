@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             val numPeopleTemp = binding.tieNumPeople.text
             val percentageTemp = binding.tiePercentage.text
 
-            // Se qualquer um for vazio precisa preencher*
+            // Se qualquer um for vazio precisa preencher
 
             if(totalTableTemp?.isEmpty() == true ||
                 numPeopleTemp?.isEmpty() == true ||
